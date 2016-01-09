@@ -1,5 +1,30 @@
+{-
+    Copyright 2016 Markus Ongyerth
+
+    This file is part of ibus-hs.
+
+    Monky is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Monky is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Monky.  If not, see <http://www.gnu.org/licenses/>.
+-}
+{-# LANGUAGE CPP #-}
 module IBus.Internal
 where
+
+
+#if MIN_VERSION_base(4,8,0)
+#else
+import Control.Applicative ((<$>))
+#endif
 
 import System.Environment.XDG.BaseDir (getUserConfigDir)
 import System.Directory (doesFileExist)
@@ -47,6 +72,7 @@ getIBusAddress = do
     Nothing -> do
       content <- fmap lines . readFile =<< getIBusSocketPath
       let file = tail . dropWhile (/= '=') .  head . filter ("IBUS_ADDRESS=" `isPrefixOf`) $content
+      -- TODO add the check for running process the original library does
       --pid <- dropWhile (/= '=') <$> head . filter ("IBUS_DAEMON_PID=" `isPrefixPof`) $content
       return file
 
