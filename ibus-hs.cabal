@@ -32,8 +32,10 @@ author:              Ongy
 
 -- An email address to which users can send suggestions, bug reports, and
 -- patches.
-maintainer:
-
+maintainer:          ongy@ongy.net
+Synopsis: A simple uncomplete ibus api
+Homepage: https://github.com/Ongy/ibus-hs
+description: This is very incomplete. If you need more feel free to contact me.
 -- A copyright notice.
 -- copyright:
 
@@ -48,6 +50,10 @@ build-type:          Simple
 -- Constraint on the version of Cabal needed to build this package.
 cabal-version:       >=1.10
 
+source-repository head
+  type: git
+  location: https://github.com/Ongy/ibus-hs
+
 library
   exposed-modules: IBus IBus.EngineDesc
   other-modules: IBus.Internal
@@ -55,6 +61,6 @@ library
   build-depends:       base >=4.6.0.1 && <5, dbus, directory, xdg-basedir
   build-depends:       unix
 
-  ghc-options:         -Wall -O2
+  ghc-options:         -Wall
   extra-libraries:     
   default-language:    Haskell2010
