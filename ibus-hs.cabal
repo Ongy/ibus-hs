@@ -48,31 +48,6 @@ build-type:          Simple
 -- Constraint on the version of Cabal needed to build this package.
 cabal-version:       >=1.10
 
-
-executable ibus
-  -- .hs or .lhs file containing the Main module.
-  main-is:             Main.hs
-
-  -- Modules included in this executable, other than Main.
-  -- other-modules:
-
-  other-modules:      IBus IBus.EngineDesc IBus.Internal
-
-  -- LANGUAGE extensions used by modules in this package.
-  -- other-extensions:
-
-  -- Other library packages from which modules are imported.
-  build-depends:       base >=4.6.0.1 && <5, dbus, directory, xdg-basedir
-  build-depends:       unix
-
-  -- Directories containing source files.
-  -- hs-source-dirs:
-
-  -- Base language which the package is written in.
-  default-language:    Haskell2010
-
-  ghc-options:         -Wall -O2
-
 library
   exposed-modules: IBus IBus.EngineDesc
   other-modules: IBus.Internal
